@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+All Questions
+{% endblock %}
+
+{% block heading %}
+Simple Recommended System
+{% endblock %}
+
+{% block content %}
+<div class="columns">
+    <div class="column is-one-quarter">
+        <form method="POST" id="filterForm">
+            <div class="field">
+                <label class="label" for="role">Role:</label>
+                <div class="control select is-block">
+                    <select class="input" id="role" name="role">
+                        <option value="">Select a role</option>
+                        {% for role in roles %}
+                            <option value="{{ role }}" {% if candidate_attributes.role == role %}selected{% endif %}>{{ role }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="experience_level">Experience Level:</label>
+                <div class="control select is-block">
+                    <select class="input" id="experience_level" name="experience_level">
+                        <option value="">Select an experience level</option>
+                        {% for level in experience_levels %}
+                            <option value="{{ level }}" {% if candidate_attributes.experience_level == level %}selected{% endif %}>{{ level }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="tags">Tags (comma separated):</label>
+                <div class="control">
+                    <input class="input" type="text" id="tags" name="tags">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="category">Category:</label>
+                <div class="control select is-block">
+                    <select class="input" id="category" name="category">
+                        <option value="">Select a category</option>
+                        {% for category in categories %}
+                            <option value="{{ category }}" {% if candidate_attributes.category == category %}selected{% endif %}>{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link" type="submit">Filter</button>
+                    <a class="button is-light" href="/">Clear All</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="column" 
+    style="
+    overflow-y:auto;
+    max-height: calc(100vh - 150px);
+    ">
+        {% if questions %}
+            {% for question in questions %}
+                <div class="card mb-4">
+                    <header class="card-header">
+                        <p class="card-header-title">{{ question.question }}</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <p><strong>Answer:</strong> {{ question.answer }}</p>
+                            <p><strong>Difficulty Level:</strong> {{ question.difficulty_level }}</p>
+                            <p><strong>Category:</strong> {{ question.category }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="notification is-warning">
+                No results found.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.egg-info/
+*.eggs/
+
+# Flask
+instance/
+.webassets-cache
+
+# Development
+.vscode/
+*.log
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# JSON data
+filtered_data/
+
+# Logging
+app.log
+
+# Questions JSON
+questions.json

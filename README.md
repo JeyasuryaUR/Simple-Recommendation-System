@@ -1,10 +1,10 @@
 # Simple Recommendation System
 
-This Python script recommends questions based on the user's role, experience level, tags, and category. The questions are loaded from a JSON file and filtered based on the user's input.
+This Flask web app recommends questions based on the user's role, experience level, tags, and category. The questions are loaded from a JSON file and filtered based on the user's input.
 
 ## Tech Stack
 
-This script uses Python 3 and its inbuilt `json` model
+This script uses Python 3 and its inbuilt `json` model and `flask` for basic frontend
 
 ## Recommendation System
 
@@ -12,14 +12,14 @@ The script then filters the loaded questions based on the user's input. The filt
 
 - Role: The script checks if the user's role is in the roles associated with the question.
 - Experience Level: The `experience_level_filter` function checks if the user's experience level is equal to or higher than the question's level. This is based on the assumption that an expert can prepare beginner questions too.
-- Tags: The `tag_filter` function checks if at least half of the question's tags are common with the user's tags.
+- Tags: The `tag_filter` function checks if at least one of the question's tags are common with the user's tags.
 - Category: If the user has specified a category, the script checks if the question's category matches the user's category.
 
 Finally, the script prints the recommended questions, along with their answer, difficulty level, and category. Each question is numbered for easy reference.
 
-## User Input
+## User Filter
 
-The script will prompt you to enter the following:
+The filter pane will allow you to modify the following:
 
 - Role: The role for which you want to recommend questions (e.g., "Software Developer").
 - Experience Level: Your experience level ("Beginner", "Intermediate", "Expert").
@@ -47,9 +47,9 @@ The questions are stored in a JSON file in the following format:
 
 ## How to Run
 
-1. Ensure you have Python installed on your system.
+1. Ensure you have Python and Flask installed on your system.
 2. Run the script using the command: `python main.py`
 
 ## Output
 
-The script will print the recommended questions, along with their answer, difficulty level, and category. Each question is numbered for easy reference.
+The webapp will print the recommended questions, along with their answer, difficulty level, and category. Each question is numbered for easy reference.
